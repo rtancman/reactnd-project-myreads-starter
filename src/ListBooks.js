@@ -6,11 +6,12 @@ import Book from './Book'
 class ListBooks extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onMoveShelf: PropTypes.func.isRequired
   }
 
   render() {
-    const { books, title } = this.props
+    const { books, title, onMoveShelf} = this.props
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
@@ -18,7 +19,10 @@ class ListBooks extends Component {
           <ol className="books-grid">
            {books.map((book) => (
               <li key={book.id}>
-                <Book book={book}/>
+                <Book
+                  book={book}
+                  onMoveShelf={onMoveShelf}
+                />
               </li>
             ))}
           </ol>

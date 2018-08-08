@@ -27,6 +27,23 @@ class BooksApp extends React.Component {
     })
   }
 
+  moveShelf = (book, shelf) => {
+    const currentShelf = book.shelf
+
+    if ( shelf !== 'none' ) {
+      this.setState((state) => ({
+        [currentShelf]: state[currentShelf].filter((b) => b.id !== book.id),
+        [shelf]: state[shelf].concat([book])
+      }))
+    }else{
+      this.setState((state) => ({
+        [currentShelf]: state[currentShelf].filter((b) => b.id !== book.id),
+      }))
+    }
+
+    BooksAPI.update(book, shelf)
+  }
+
   render() {
     return (
       <div className="app">
@@ -38,14 +55,17 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
                 <ListBooks
+                  onMoveShelf={this.moveShelf}
                   books={this.state.currentlyReading}
                   title="Currently Reading"
                 />
                 <ListBooks
+                  onMoveShelf={this.moveShelf}
                   books={this.state.wantToRead}
                   title="Want to Read"
                 />
                 <ListBooks
+                  onMoveShelf={this.moveShelf}
                   books={this.state.read}
                   title="Read"
                 />
