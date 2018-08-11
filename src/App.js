@@ -72,10 +72,18 @@ class BooksApp extends React.Component {
             return book
           })
           this.setState((state) => ({
-            booksFromQuery: books
+            booksFromQuery: books,
+          }))
+        }else {
+          this.setState((state) => ({
+            booksFromQuery: [],
           }))
         }
       })
+    }else {
+      this.setState((state) => ({
+        booksFromQuery: [],
+      }))
     }
   }
 

@@ -6,13 +6,14 @@ import Book from './Book'
 
 class SearchBooks extends Component {
   static propTypes = {
+    query: PropTypes.string,
     books: PropTypes.array.isRequired,
     onSearch: PropTypes.func.isRequired,
     onMoveShelf: PropTypes.func.isRequired
   }
 
   state = {
-    query: ''
+    query: this.props.query || ''
   }
 
   updateQuery = (query) => {
@@ -22,8 +23,12 @@ class SearchBooks extends Component {
     )
   }
 
+  componentDidMount() {
+    this.props.onSearch(this.state.query)
+  }
+
   render() {
-    const { books, onMoveShelf } = this.props
+    const { books, onMoveShelf, onSearch } = this.props
     const { query } = this.state
     return (
       <div className="search-books">
@@ -64,5 +69,4 @@ class SearchBooks extends Component {
 }
 
 export default SearchBooks
-
 
