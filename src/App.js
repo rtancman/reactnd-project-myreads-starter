@@ -3,6 +3,8 @@ import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
+import SearchBooks from './SearchBooks'
+
 
 class BooksApp extends React.Component {
   state = {
@@ -14,7 +16,8 @@ class BooksApp extends React.Component {
      */
     currentlyReading: [],
     wantToRead: [],
-    read: []
+    read: [],
+    booksFromQuery: []
   }
 
   componentDidMount() {
@@ -30,7 +33,11 @@ class BooksApp extends React.Component {
   moveShelf = (book, shelf) => {
     const currentShelf = book.shelf
 
-    if ( shelf !== 'none' ) {
+    if ( currentShelf === 'none' ) {
+      this.setState((state) => ({
+        [shelf]: state[shelf].concat([book])
+      }))
+    }else if ( shelf !== 'none' ) {
       this.setState((state) => ({
         [currentShelf]: state[currentShelf].filter((b) => b.id !== book.id),
         [shelf]: state[shelf].concat([book])
@@ -42,6 +49,34 @@ class BooksApp extends React.Component {
     }
 
     BooksAPI.update(book, shelf)
+  }
+
+  searchBookInMyReads = (book_id, category) => {
+    return (this.state[category].filter((b) => b.id === book_id)).length > 0
+  }
+
+  search = (query) => {
+    if (query.length > 3) {
+      BooksAPI.search(query).then((books) => {
+        if( !books.hasOwnProperty('error') ){
+          books.map((book) => {
+            if (this.searchBookInMyReads(book.id, 'currentlyReading')) {
+              book.shelf = 'currentlyReading'
+            }else if (this.searchBookInMyReads(book.id, 'wantToRead')) {
+              book.shelf = 'wantToRead'
+            }else if (this.searchBookInMyReads(book.id, 'read')) {
+              book.shelf = 'read'
+            }else {
+              book.shelf = 'none'
+            }
+            return book
+          })
+          this.setState((state) => ({
+            booksFromQuery: books
+          }))
+        }
+      })
+    }
   }
 
   render() {
@@ -77,25 +112,11 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <Route path='/search' render={({ history }) => (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <Link to="/" className="close-search">Close</Link>
-              <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author"/>
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
+          <SearchBooks
+            books={this.state.booksFromQuery}
+            onSearch={this.search}
+            onMoveShelf={this.moveShelf}
+          />
         )}/>
       </div>
     )
