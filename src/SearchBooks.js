@@ -18,8 +18,8 @@ class SearchBooks extends Component {
 
   updateQuery = (query) => {
     this.setState(
-      { query: query.trim() },
-      () => this.props.onSearch(this.state.query)
+      { query: query },
+      () => this.props.onSearch(this.state.query.trim())
     )
   }
 
