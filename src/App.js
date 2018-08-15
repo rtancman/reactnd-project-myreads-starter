@@ -6,6 +6,12 @@ import ListBooks from './ListBooks'
 import SearchBooks from './SearchBooks'
 
 
+const categories = [
+  {code: 'currentlyReading', label: 'Currently Reading'},
+  {code: 'wantToRead', label: 'Want to Read'},
+  {code: 'read', label: 'Read'}
+]
+
 class BooksApp extends React.Component {
   state = {
     /**
@@ -97,21 +103,14 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <ListBooks
-                  onMoveShelf={this.moveShelf}
-                  books={this.state.currentlyReading}
-                  title="Currently Reading"
-                />
-                <ListBooks
-                  onMoveShelf={this.moveShelf}
-                  books={this.state.wantToRead}
-                  title="Want to Read"
-                />
-                <ListBooks
-                  onMoveShelf={this.moveShelf}
-                  books={this.state.read}
-                  title="Read"
-                />
+                { categories.map((category) => (
+                  <ListBooks
+                    key={category.code}
+                    onMoveShelf={this.moveShelf}
+                    books={this.state[category.code]}
+                    title={category.label}
+                  />
+                ))}
               </div>
             </div>
             <div className="open-search">
