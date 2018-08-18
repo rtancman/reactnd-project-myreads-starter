@@ -20,10 +20,12 @@ class Book extends Component {
   }
 
   changeShelf = (shelf) => {
-    let current = this.state.book
-    this.props.onMoveShelf(current, shelf)
-    current.shelf = shelf
-    this.setState({book: current})
+    this.props.onMoveShelf(this.state.book, shelf)
+    const updatedBook = {
+      ...this.state.book,
+      shelf
+    }
+    this.setState({book: updatedBook})
   }
 
   render() {

@@ -38,15 +38,15 @@ class BooksApp extends React.Component {
 
   moveShelf = (book, shelf) => {
     const currentShelf = book.shelf
-
+    const newBook = { ...book, shelf }
     if ( currentShelf === 'none' ) {
       this.setState((state) => ({
-        [shelf]: state[shelf].concat([book])
+        [shelf]: state[shelf].concat([newBook])
       }))
     }else if ( shelf !== 'none' ) {
       this.setState((state) => ({
         [currentShelf]: state[currentShelf].filter((b) => b.id !== book.id),
-        [shelf]: state[shelf].concat([book])
+        [shelf]: state[shelf].concat([newBook])
       }))
     }else{
       this.setState((state) => ({
@@ -54,7 +54,7 @@ class BooksApp extends React.Component {
       }))
     }
 
-    BooksAPI.update(book, shelf)
+    BooksAPI.update(newBook, shelf)
   }
 
   searchBookInMyReads = (book_id, category) => {
