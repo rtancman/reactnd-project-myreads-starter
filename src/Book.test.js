@@ -99,7 +99,9 @@ describe('Book', () => {
 
   describe('when user change category book', () => {
     it('change select value', () => {
-      const onMoveShelf = jest.fn();
+      const onMoveShelf = jest.fn(() => {
+        return new Promise((resolve, reject) => resolve())
+      })
       const event = {
         preventDefault() {},
         target: { value: 'read' }

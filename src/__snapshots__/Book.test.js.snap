@@ -31,25 +31,21 @@ exports[`Book when component renders without authors 1`] = `
           Move to...
         </option>
         <option
-          defaultValue={false}
           value="currentlyReading"
         >
           Currently Reading
         </option>
         <option
-          defaultValue={false}
           value="wantToRead"
         >
           Want to Read
         </option>
         <option
-          defaultValue={false}
           value="read"
         >
           Read
         </option>
         <option
-          defaultValue={false}
           value="none"
         >
           None
@@ -96,25 +92,21 @@ exports[`Book when component renders without crashing 1`] = `
           Move to...
         </option>
         <option
-          defaultValue={true}
           value="currentlyReading"
         >
           Currently Reading
         </option>
         <option
-          defaultValue={false}
           value="wantToRead"
         >
           Want to Read
         </option>
         <option
-          defaultValue={false}
           value="read"
         >
           Read
         </option>
         <option
-          defaultValue={false}
           value="none"
         >
           None
@@ -156,25 +148,21 @@ exports[`Book when component renders without imageLinks 1`] = `
           Move to...
         </option>
         <option
-          defaultValue={false}
           value="currentlyReading"
         >
           Currently Reading
         </option>
         <option
-          defaultValue={false}
           value="wantToRead"
         >
           Want to Read
         </option>
         <option
-          defaultValue={false}
           value="read"
         >
           Read
         </option>
         <option
-          defaultValue={false}
           value="none"
         >
           None
