@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBooks when components renders with a list books 1`] = `
+<div
+  className="search-books"
+>
+  <div
+    className="search-books-bar"
+  >
+    <a
+      className="close-search"
+      href="/"
+      onClick={[Function]}
+    >
+      Close
+    </a>
+    <div
+      className="search-books-input-wrapper"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search by title or author"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="search-books-results"
+  >
+    <ol
+      className="books-grid"
+    >
+      <li>
+        <div
+          className="book"
+        >
+          <div
+            className="book-top"
+          >
+            <div
+              className="book-cover"
+              style={
+                Object {
+                  "backgroundImage": "url(\\"http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api\\")",
+                  "height": 193,
+                  "width": 128,
+                }
+              }
+            />
+            <div
+              className="book-shelf-changer"
+            >
+              <select
+                onChange={[Function]}
+                value="currentlyReading"
+              >
+                <option
+                  disabled={true}
+                  value="move"
+                >
+                  Move to...
+                </option>
+                <option
+                  defaultValue={true}
+                  value="currentlyReading"
+                >
+                  Currently Reading
+                </option>
+                <option
+                  defaultValue={false}
+                  value="wantToRead"
+                >
+                  Want to Read
+                </option>
+                <option
+                  defaultValue={false}
+                  value="read"
+                >
+                  Read
+                </option>
+                <option
+                  defaultValue={false}
+                  value="none"
+                >
+                  None
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            className="book-title"
+          >
+            The Linux Command Line
+          </div>
+          <div
+            className="book-authors"
+          >
+            William E. Shotts, Jr.
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          className="book"
+        >
+          <div
+            className="book-top"
+          >
+            <div
+              className="book-shelf-changer"
+            >
+              <select
+                onChange={[Function]}
+                value="currentlyReading"
+              >
+                <option
+                  disabled={true}
+                  value="move"
+                >
+                  Move to...
+                </option>
+                <option
+                  defaultValue={true}
+                  value="currentlyReading"
+                >
+                  Currently Reading
+                </option>
+                <option
+                  defaultValue={false}
+                  value="wantToRead"
+                >
+                  Want to Read
+                </option>
+                <option
+                  defaultValue={false}
+                  value="read"
+                >
+                  Read
+                </option>
+                <option
+                  defaultValue={false}
+                  value="none"
+                >
+                  None
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            className="book-title"
+          >
+            The Linux
+          </div>
+          <div
+            className="book-authors"
+          >
+            Shotts Jr.
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`SearchBooks when components renders with an empty list books 1`] = `
+<div
+  className="search-books"
+>
+  <div
+    className="search-books-bar"
+  >
+    <a
+      className="close-search"
+      href="/"
+      onClick={[Function]}
+    >
+      Close
+    </a>
+    <div
+      className="search-books-input-wrapper"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search by title or author"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="search-books-results"
+  >
+    <ol
+      className="books-grid"
+    />
+  </div>
+</div>
+`;
