@@ -65,25 +65,21 @@ exports[`ListBooks when component renders is valid list books 1`] = `
                   Move to...
                 </option>
                 <option
-                  defaultValue={true}
                   value="currentlyReading"
                 >
                   Currently Reading
                 </option>
                 <option
-                  defaultValue={false}
                   value="wantToRead"
                 >
                   Want to Read
                 </option>
                 <option
-                  defaultValue={false}
                   value="read"
                 >
                   Read
                 </option>
                 <option
-                  defaultValue={false}
                   value="none"
                 >
                   None
@@ -124,25 +120,21 @@ exports[`ListBooks when component renders is valid list books 1`] = `
                   Move to...
                 </option>
                 <option
-                  defaultValue={true}
                   value="currentlyReading"
                 >
                   Currently Reading
                 </option>
                 <option
-                  defaultValue={false}
                   value="wantToRead"
                 >
                   Want to Read
                 </option>
                 <option
-                  defaultValue={false}
                   value="read"
                 >
                   Read
                 </option>
                 <option
-                  defaultValue={false}
                   value="none"
                 >
                   None
