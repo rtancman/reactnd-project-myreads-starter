@@ -33,6 +33,8 @@ class BooksApp extends React.Component {
   moveShelf = (book, shelf) => {
     const currentShelf = book.shelf
     const newBook = { ...book, shelf }
+    const oldState = {...this.state}
+
     if ( currentShelf === 'none' ) {
       this.setState((state) => ({
         [shelf]: state[shelf].concat([newBook])
@@ -48,7 +50,15 @@ class BooksApp extends React.Component {
       }))
     }
 
-    BooksAPI.update(newBook, shelf)
+    return new Promise((resolve, reject) => {
+        BooksAPI.update(newBook, shelf).then((resp) => {
+          resolve()
+        }).catch((e) => {
+          alert('Ocorreu um erro inesperado... Retornando ao estado original. Tente novamente aplicar a alteração')
+          this.setState({ ...oldState })
+          reject()
+        })
+    })
   }
 
   searchBookInMyReads = (book_id, category) => {
