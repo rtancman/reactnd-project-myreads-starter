@@ -65,7 +65,7 @@ describe('SearchBooks', () => {
   })
 
   describe('when user search books', () => {
-    it('change input value', () => {
+    it('change input value', () => {      
       const onMoveShelf = jest.fn();
       const event = {
         target: { value: 'Linux' }
@@ -80,9 +80,9 @@ describe('SearchBooks', () => {
           />
         </MemoryRouter>
       )
-      wrapper.find('input').simulate('change', event);
-      expect(onSearch).toBeCalled()
-      //expect(wrapper.state().query).toEqual('Linux')
+      wrapper.find('input').simulate('change', event)
+      // expect(onSearch).toBeCalled()
+      expect(wrapper.find('SearchBooks').instance().state.query).toEqual('Linux')
     })
   })
 })

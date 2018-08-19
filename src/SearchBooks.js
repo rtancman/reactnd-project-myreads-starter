@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { debounce } from 'throttle-debounce';
 import Book from './Book'
 
 
@@ -16,15 +17,17 @@ class SearchBooks extends Component {
     query: this.props.query || ''
   }
 
+  onSearchDebounced = debounce(500, this.props.onSearch)
+
   updateQuery = (query) => {
     this.setState(
       { query: query },
-      () => this.props.onSearch(this.state.query.trim())
+      () => this.onSearchDebounced(this.state.query.trim())
     )
   }
 
   componentDidMount() {
-    this.props.onSearch(this.state.query)
+    this.onSearchDebounced(this.state.query)
   }
 
   render() {
